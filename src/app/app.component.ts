@@ -9,6 +9,7 @@ import { Todo } from './models/todo'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  todo;
   title = 'mockdata';
   todos$:Observable<Todo[]>;
     constructor(private todosService: TodosService){
@@ -16,14 +17,20 @@ export class AppComponent {
     }
   
   ngOnInit(){
+    console.log(this.todos$);
+    console.log(this.todosService.getAll());
     
+    this.todosService.getAll().subscribe(res=>console.log(res))
+     
   }
+    
 
   getTodos(){
     this.todosService.getAll()
   }
 
-  addTodo(todoTitle:string){
-    this.todosService.add({title: todoTitle})
+  addTodo(){
+    console.log(this.todo)
+    this.todosService.add({title: this.todo})
   }
 }
