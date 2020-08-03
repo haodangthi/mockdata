@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {StoreModule} from '@ngrx/store'
+import{TodosService} from './services/todos.service'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppStoreModule } from './store/app-store.module';
+import { ServicesModule } from './services/services.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +13,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AppStoreModule,
+    ServicesModule,
+    StoreModule.forRoot({})
   ],
   providers: [],
   bootstrap: [AppComponent]
